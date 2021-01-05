@@ -2,13 +2,14 @@ import argparse
 import datetime
 import pprint
 import random
+import numpy as np
 
 
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 import time
 
-DB_NAME = 'Colorado'
+DB_NAME = 'Denver'
 
 class last_reads:
     last_pressure = 0
@@ -22,16 +23,16 @@ def GetDataValue(workout_dict):
     wf = {}
 
     w = workout_dict
-    wt['City'] = "Flagstaff"
+    wt['City'] = "Phoenix"
     # wt['created_at'] = w.created_at
 
     epoch_time = time.time_ns() 
     
     created_at = epoch_time
-    wt['State'] = "Phoenix"
+    wt['State'] = "Arizona"
 
-    new_temperature = last_reads.last_temperature + random.random()
-    new_pressure = last_reads.last_pressure + random.random()
+    new_temperature = last_reads.last_temperature + np.random.normal()
+    new_pressure = last_reads.last_pressure + np.random.normal()
     last_reads.last_temperature = new_temperature
     last_reads.last_pressure = new_pressure
     wf['Temperature'] = new_temperature
@@ -56,7 +57,7 @@ if __name__ == '__main__':
 
     last_val = 0
     data_points = []
-    for w in range(0,10000):
+    for w in range(0,1000):
         pprint.pprint(w)
         created_at, wt, wf = GetDataValue(w)
         json_body = [

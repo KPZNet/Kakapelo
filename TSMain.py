@@ -9,7 +9,14 @@ from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 import time
 
-DB_NAME = 'Denver'
+
+class db_constants:
+    bucket = "Denver"
+    token = "b5htN9v9bARzZEHLT512UR2nC_T5PkYuZTz28Bd1UrAV0P88uo0wZ4dmyQmL-2EfYRAS8Vg2dX_iaqPDA_dpPw=="
+    org = "kpznet"
+    username = "KenCeglia@hotmail.com"
+    password = "Viper.12k"
+
 
 class last_reads:
     last_pressure = 0
@@ -43,21 +50,12 @@ def GetDataValue(workout_dict):
 
 if __name__ == '__main__':
 
-    username = 'KenCeglia@hotmail.com'
-    password = 'Viper.12k'
-
-
-    token = "tLtgfm9pZ3cwIdvqSOEm3pTRw4QdQUBrvtHkEMIQsguxdzo-Aj7uV3j3jd3HrDBOLO5s9qy8e-yflHcipqBFPw=="
-    org = "kpznet"
-    bucket = DB_NAME
-
-    client = InfluxDBClient(url="http://localhost:8086", token=token)
-
+    client = InfluxDBClient(url="http://localhost:8086", token="b5htN9v9bARzZEHLT512UR2nC_T5PkYuZTz28Bd1UrAV0P88uo0wZ4dmyQmL-2EfYRAS8Vg2dX_iaqPDA_dpPw==")
     write_api = client.write_api(write_options=SYNCHRONOUS)
 
     last_val = 0
     data_points = []
-    for w in range(0,1000):
+    for w in range(0,250):
         pprint.pprint(w)
         created_at, wt, wf = GetDataValue(w)
         json_body = [
@@ -70,6 +68,9 @@ if __name__ == '__main__':
         ]
         pprint.pprint(json_body)
         data_points.extend(json_body)
-        write_api.write(bucket, org, data_points)
+        write_api.write(db_constants.bucket, db_constants.org, data_points)
     print('Writing %s to database' % len(data_points))
-    
+
+    #query = f'from(DB_NAME: \\"{DB_NAME}\\") |> range(start: -24h)'
+    #tables = client.query_api().query(query, org=org)
+    #pprint.pprint(tables)

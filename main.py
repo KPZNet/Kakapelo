@@ -13,8 +13,13 @@ import pylotoncycle
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-#data = "mem,host=host1 used_percent=23.43234543"
-#write_api.write(bucket, org, data)
+
+class db_constants:
+    bucket = "KOne"
+    token = "_22qQ9rTQarySaVAE1VIbK3i1X5bbfO-zfx8A96CngZwAVoZvPVZL-xblnDuZcyxq_lwwVz-5NfP90m-3MUgbA=="
+    org = "kpznet"
+    username = "KenCeglia@hotmail.com"
+    password = "Viper.12k"
 
 
 def ParseCommandLine():
@@ -94,19 +99,12 @@ if __name__ == '__main__':
     #parser = ParseCommandLine()
     #args = parser.parse_args()
     #DEBUG = args.DEBUG
-    username = 'KenCeglia@hotmail.com'
-    password = 'Viper.12k'
 
+    conn = pylotoncycle.PylotonCycle(db_constants.username, db_constants.password)
 
-    conn = pylotoncycle.PylotonCycle(username, password)
+    workouts = conn.GetRecentWorkouts(200)
 
-    workouts = conn.GetRecentWorkouts(1)
-
-    token = "tLtgfm9pZ3cwIdvqSOEm3pTRw4QdQUBrvtHkEMIQsguxdzo-Aj7uV3j3jd3HrDBOLO5s9qy8e-yflHcipqBFPw=="
-    org = "kpznet"
-    bucket = "Polo1"
-
-    client = InfluxDBClient(url="http://localhost:8086", token=token)
+    client = InfluxDBClient(url="http://localhost:8086", token=db_constants.token)
 
     write_api = client.write_api(write_options=SYNCHRONOUS)
 
@@ -125,7 +123,7 @@ if __name__ == '__main__':
         pprint.pprint(json_body)
         data_points.extend(json_body)
     print('Writing %s to database' % len(data_points))
-    write_api.write(bucket, org, data_points)
+    write_api.write(db_constants.bucket, db_constants.org, data_points)
 
 
 

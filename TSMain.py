@@ -11,8 +11,8 @@ import time
 
 
 class db_constants:
-    bucket = "Denver"
-    token = "b5htN9v9bARzZEHLT512UR2nC_T5PkYuZTz28Bd1UrAV0P88uo0wZ4dmyQmL-2EfYRAS8Vg2dX_iaqPDA_dpPw=="
+    bucket = "KData"
+    token = "_22qQ9rTQarySaVAE1VIbK3i1X5bbfO-zfx8A96CngZwAVoZvPVZL-xblnDuZcyxq_lwwVz-5NfP90m-3MUgbA=="
     org = "kpznet"
     username = "KenCeglia@hotmail.com"
     password = "Viper.12k"
@@ -50,7 +50,7 @@ def GetDataValue(workout_dict):
 
 if __name__ == '__main__':
 
-    client = InfluxDBClient(url="http://localhost:8086", token="b5htN9v9bARzZEHLT512UR2nC_T5PkYuZTz28Bd1UrAV0P88uo0wZ4dmyQmL-2EfYRAS8Vg2dX_iaqPDA_dpPw==")
+    client = InfluxDBClient(url="http://localhost:8086", token=db_constants.token)
     write_api = client.write_api(write_options=SYNCHRONOUS)
 
     last_val = 0
@@ -71,6 +71,6 @@ if __name__ == '__main__':
         write_api.write(db_constants.bucket, db_constants.org, data_points)
     print('Writing %s to database' % len(data_points))
 
-    #query = f'from(DB_NAME: \\"{DB_NAME}\\") |> range(start: -24h)'
-    #tables = client.query_api().query(query, org=org)
-    #pprint.pprint(tables)
+    query = f'from(bucket: "{db_constants.bucket}") |> range(start: -1h)'
+    tables = client.query_api().query(query, org=db_constants.org)
+    pprint.pprint(tables)

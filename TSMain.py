@@ -4,18 +4,11 @@ import pprint
 import random
 import numpy as np
 
+from consts import db_constants
 
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 import time
-
-
-class db_constants:
-    bucket = "KData"
-    token = "_22qQ9rTQarySaVAE1VIbK3i1X5bbfO-zfx8A96CngZwAVoZvPVZL-xblnDuZcyxq_lwwVz-5NfP90m-3MUgbA=="
-    org = "kpznet"
-    username = "KenCeglia@hotmail.com"
-    password = "Viper.12k"
 
 
 class last_reads:

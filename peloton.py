@@ -8,18 +8,13 @@ import argparse
 import datetime
 import pprint
 
+from consts import db_constants
+
 import pylotoncycle
 
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-
-class db_constants:
-    bucket = "KOne"
-    token = "_22qQ9rTQarySaVAE1VIbK3i1X5bbfO-zfx8A96CngZwAVoZvPVZL-xblnDuZcyxq_lwwVz-5NfP90m-3MUgbA=="
-    org = "kpznet"
-    username = "KenCeglia@hotmail.com"
-    password = "Viper.12k"
 
 
 if __name__ == '__main__':

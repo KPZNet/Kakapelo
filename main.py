@@ -8,18 +8,11 @@ import argparse
 import datetime
 import pprint
 
+from consts import db_constants
+
 import pylotoncycle
-
-from influxdb_client import InfluxDBClient, Point, WritePrecision
+from influxdb_client import InfluxDBClient
 from influxdb_client.client.write_api import SYNCHRONOUS
-
-
-class db_constants:
-    bucket = "KOne"
-    token = "_22qQ9rTQarySaVAE1VIbK3i1X5bbfO-zfx8A96CngZwAVoZvPVZL-xblnDuZcyxq_lwwVz-5NfP90m-3MUgbA=="
-    org = "kpznet"
-    username = "KenCeglia@hotmail.com"
-    password = "Viper.12k"
 
 
 def ParseCommandLine():
@@ -102,7 +95,7 @@ if __name__ == '__main__':
 
     conn = pylotoncycle.PylotonCycle(db_constants.username, db_constants.password)
 
-    workouts = conn.GetRecentWorkouts(200)
+    workouts = conn.GetRecentWorkouts(1)
 
     client = InfluxDBClient(url="http://localhost:8086", token=db_constants.token)
 
@@ -125,5 +118,6 @@ if __name__ == '__main__':
     print('Writing %s to database' % len(data_points))
     write_api.write(db_constants.bucket, db_constants.org, data_points)
 
+    print("Finishing writing")
 
 

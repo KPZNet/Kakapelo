@@ -46,15 +46,13 @@ def ParseWorkout(workout_dict):
     created_at = dt.strftime('%Y-%m-%dT%H:%M:%SZ')
     wt['personal_record'] = w['is_total_work_personal_record']
     wt['status'] = w['status']
-
     try:
-        wf['instructor'] = w['instructor_name']
+        wt['instructor'] = w['instructor_name']
     except KeyError:
         pass
-
     workout_duration_seconds = w['ride']['duration']
     workout_duration_minutes = workout_duration_seconds / 60
-    #wt['workout_duration_minutes'] = workout_duration_minutes
+    wt['workout_duration_minutes'] = workout_duration_minutes
     wf['workout_duration_minutes'] = workout_duration_minutes
     ride_title = w['ride']['title']
     wf['workout_id'] = w['id']
@@ -116,10 +114,7 @@ if __name__ == '__main__':
             }
         ]
         pprint.pprint(json_body)
-        data_points.extend(json_body)
-        write_api.write(db_constants.bucket, db_constants.org, json_body)
 
-    #write_api.write(db_constants.bucket, db_constants.org, data_points)
     print("Done")
 
 

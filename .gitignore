@@ -1,5 +1,7 @@
 /.vscode
-/kvenv
-/venv/
+/env
+/env/
 /.idea
+/.idea/
+
 

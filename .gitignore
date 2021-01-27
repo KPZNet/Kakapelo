@@ -1,6 +1,6 @@
 /.vscode
-/env
-/env/
+/.env
+/.env/
 /.idea
 /.idea/
 

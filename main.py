@@ -122,4 +122,3 @@ if __name__ == '__main__':
     #write_api.write(db_constants.bucket, db_constants.org, data_points)
     print("Done")
 
-

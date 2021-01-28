@@ -1,8 +1,13 @@
 /.vscode
+/.venv
+/.venv/
 /.env
 /.env/
+/venv
+/venv/
+/env
+/env/
 /.idea
 /.idea/
-
 
 __pycache__/consts.cpython-39.pyc

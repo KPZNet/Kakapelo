@@ -3,8 +3,8 @@ import datetime
 import pprint
 
 class db_constants:
-    bucket = "Katelo"
-    token = "gLY5dHWzppci-UqOSUgVYgoGBv5nDTzkhZpK7TunPCXHLMdIVFTKFAv2Mf7QoL1D5m4mOiaGqzlaGRcoxkf9oQ=="
+    bucket = "Keloton"
+    token = "_22qQ9rTQarySaVAE1VIbK3i1X5bbfO-zfx8A96CngZwAVoZvPVZL-xblnDuZcyxq_lwwVz-5NfP90m-3MUgbA=="
     org = "kpznet"
     username = "KenCeglia@hotmail.com"
     password = "Viper.12k"

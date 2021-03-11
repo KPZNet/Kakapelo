@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
     conn = pylotoncycle.PylotonCycle(db_constants.username, db_constants.password)
 
-    workouts = conn.GetRecentWorkouts(5)
+    workouts = conn.GetRecentWorkouts(50)
 
     client = InfluxDBClient(url="http://localhost:8086", token=db_constants.token)
 
@@ -58,7 +58,7 @@ if __name__ == '__main__':
             }
         ]
         pprint.pprint(json_body)
-
+        write_api.write(db_constants.bucket, db_constants.org, json_body)
 
     print("Done")
 

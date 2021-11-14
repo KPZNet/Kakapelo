@@ -3,11 +3,11 @@ import datetime
 import pprint
 
 class db_constants:
-    bucket = "Keloton"
-    token = "_22qQ9rTQarySaVAE1VIbK3i1X5bbfO-zfx8A96CngZwAVoZvPVZL-xblnDuZcyxq_lwwVz-5NfP90m-3MUgbA=="
-    org = "kpznet"
+    bucket = "ABucket"
+    token = "20TkM1WY2UE9U0_twXn_IQcLGo3ODs2XNkqyxBkwruR5uWA6bwlV0fD_BAmKtjam6o-2vYAYXZXPiftN6RwK8A=="
+    org = "korg"
     username = "KenCeglia@hotmail.com"
-    password = "Viper.12k"
+    password = "Cartman.12k"
 
 
 def ParseCommandLine():

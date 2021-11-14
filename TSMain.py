@@ -61,9 +61,9 @@ if __name__ == '__main__':
         ]
         pprint.pprint(json_body)
         data_points.extend(json_body)
-        write_api.write(db_constants.bucket, db_constants.org, data_points)
+        write_api.write(db_constants.tbucket, db_constants.org, data_points)
     print('Writing %s to database' % len(data_points))
 
     query = f'from(bucket: "{db_constants.bucket}") |> range(start: -1h)'
-    tables = client.query_api().query(query, org=db_constants.org)
+    #tables = client.query_api().query(query, org=db_constants.org)
     pprint.pprint(tables)

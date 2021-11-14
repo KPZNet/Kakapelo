@@ -21,12 +21,13 @@ if __name__ == '__main__':
 
     client = InfluxDBClient(url="http://localhost:8086", token=db_constants.token)
 
-    query = f'from(bucket: "{db_constants.bucket}") |> range(start: -30d)'
+    query = f'from(bucket: "{db_constants.tbucket}") |> range(start: -30m)'
+
     tables = client.query_api().query(query, org=db_constants.org)
 
 
     print(tables)
-
+    m = input("Key")
 
 
 

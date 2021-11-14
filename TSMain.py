@@ -23,13 +23,13 @@ def GetDataValue(workout_dict):
     wf = {}
 
     w = workout_dict
-    wt['City'] = "Phoenix"
+    wt['City'] = "Pari"
     # wt['created_at'] = w.created_at
 
     epoch_time = time.time_ns() 
     
     created_at = epoch_time
-    wt['State'] = "Arizona"
+    wt['State'] = "California"
 
     new_temperature = last_reads.last_temperature + np.random.normal()
     new_pressure = last_reads.last_pressure + np.random.normal()
@@ -48,8 +48,9 @@ if __name__ == '__main__':
 
     last_val = 0
     data_points = []
-    for w in range(0,250):
-        pprint.pprint(w)
+    for w in range(0,2500):
+        #time.sleep(0.1)
+        #pprint.pprint(w)
         created_at, wt, wf = GetDataValue(w)
         json_body = [
             {
@@ -59,11 +60,11 @@ if __name__ == '__main__':
                 'fields': wf
             }
         ]
-        pprint.pprint(json_body)
+        #pprint.pprint(json_body)
         data_points.extend(json_body)
         write_api.write(db_constants.tbucket, db_constants.org, data_points)
+        
     print('Writing %s to database' % len(data_points))
 
     query = f'from(bucket: "{db_constants.bucket}") |> range(start: -1h)'
-    #tables = client.query_api().query(query, org=db_constants.org)
-    pprint.pprint(tables)
+

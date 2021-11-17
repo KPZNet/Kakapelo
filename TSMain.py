@@ -50,7 +50,8 @@ if __name__ == '__main__':
     data_points = []
     for w in range(0,2500):
         #time.sleep(0.1)
-        #pprint.pprint(w)
+        if w % 50 == 0:
+            pprint.pprint(w)
         created_at, wt, wf = GetDataValue(w)
         json_body = [
             {
@@ -62,7 +63,7 @@ if __name__ == '__main__':
         ]
         #pprint.pprint(json_body)
         data_points.extend(json_body)
-        write_api.write(db_constants.tbucket, db_constants.org, data_points)
+        write_api.write(db_constants.ktbucket, db_constants.org, data_points)
         
     print('Writing %s to database' % len(data_points))
 

@@ -3,8 +3,8 @@ import datetime
 import pprint
 
 class db_constants:
-    bucket = "kzbucket"
-    tbucket = "ktbucket"
+    bucket = "kbucket"
+    ktbucket = "ktbucket"
     token = "20TkM1WY2UE9U0_twXn_IQcLGo3ODs2XNkqyxBkwruR5uWA6bwlV0fD_BAmKtjam6o-2vYAYXZXPiftN6RwK8A=="
     org = "korg"
     username = "KenCeglia@hotmail.com"

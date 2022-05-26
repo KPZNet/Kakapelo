@@ -4,9 +4,8 @@ import pprint
 
 class db_constants:
     bucket = "kbucket"
-    ktbucket = "ktbucket"
-    token = "20TkM1WY2UE9U0_twXn_IQcLGo3ODs2XNkqyxBkwruR5uWA6bwlV0fD_BAmKtjam6o-2vYAYXZXPiftN6RwK8A=="
-    org = "korg"
+    token = "8hlzuCS76MT7-LsuLiMVxD-CyfUZRCdVDH9NSkjnmn5ek6hoGtN_VBZ8E2Bj9fQrQfo_m3tr6sm_cP5PDf8IzQ=="
+    org = "kpc"
     username = "KenCeglia@hotmail.com"
     password = "Cartman.12k"
 

@@ -18,10 +18,6 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 
 
 if __name__ == '__main__':
-    #parser = ParseCommandLine()
-    #args = parser.parse_args()
-    #DEBUG = args.DEBUG
-
     
     conn = pylotoncycle.PylotonCycle(db_constants.username, db_constants.password)
 
